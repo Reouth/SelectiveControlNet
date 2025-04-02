@@ -27,3 +27,6 @@ def normalize_mask(mask):
         mask_np /= np.max(mask_np)
     mask_np = np.expand_dims(mask_np, axis=-1)
     return mask_np
+
+def get_foreground_images(frames):
+    return [get_foreground_image(frame) for frame in frames]
