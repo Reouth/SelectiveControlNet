@@ -1,5 +1,6 @@
 from rembg import remove
 from PIL import Image, ImageOps
+import numpy as np
 
 def get_foreground_mask(image):
     return remove(image, only_mask=True)
