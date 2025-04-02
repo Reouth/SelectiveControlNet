@@ -115,7 +115,7 @@ Technical limitations:
    * **Video extension with temporal control**: Adapt the pipeline for consistent multi-frame generation using temporal-aware diffusion models
 
 ---
-### Bonus Challenge: Consistent Transformation Across Video Frames
+### Bonus Challenge: Consistent Transformation Across 2 frames
 [![Open Bonus in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/15HhGX-Q7EyLXTH2cayveuLBjywvi2ChV?usp=sharing)
 
 #### Approach and Reasoning
