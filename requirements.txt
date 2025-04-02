@@ -1,0 +1,8 @@
+torch
+diffusers>=0.14.0
+transformers
+controlnet-aux
+rembg
+Pillow
+numpy
+opencv-python
