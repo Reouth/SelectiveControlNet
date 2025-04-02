@@ -1,6 +1,6 @@
 from PIL import Image
 import numpy as np
-from src.image_utils import validate_image_sizes
+from src.image_utils import validate_same_size
 from src.masking import normalize_mask
 
 def blend_images(fg_np, bg_np, mask_np):
@@ -11,7 +11,7 @@ def merge_images(foreground_image, background_image, mask):
     Merge foreground and background using a binary mask.
     """
     try:
-        validate_image_sizes(foreground_image, background_image, mask)
+        validate_same_size(foreground_image, background_image, mask)
 
         fg = foreground_image.convert("RGB")
         bg = background_image.convert("RGB")
