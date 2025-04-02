@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 import cv2
-import os
+
 def load_and_resize_image(path, size=(512, 512)):
     return Image.open(path).convert("RGB").resize(size)
 
@@ -44,10 +44,6 @@ def extract_two_frames(video_path, frame_indices=[0, 1]):
             frames.append(Image.fromarray(frame_rgb))
     cap.release()
     return frames
-
-
-import numpy as np
-
 
 def frames_to_video(frames, output_path, fps=2):
 
