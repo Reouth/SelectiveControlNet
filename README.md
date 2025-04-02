@@ -43,7 +43,7 @@ Separates foreground and background with masks
 SelectiveControlNet/
 │
 ├── notebooks/
-│   └── selective_controlnet.ipynb      # Main notebook
+│   └── SelectiveControlNet.ipynb      # Main notebook
 │
 ├── src/
 │   ├── masking.py                      # Foreground/background masking and normalization
@@ -100,16 +100,15 @@ Technical limitations:
 ---
 ### Q3 – Improvements With More Time or Resources
 1. **Pre- and Post-Processing**
-    * Use segmentation-based masks (e.g. SAM)
-    * Apply soft edge blending 
-    * Improve prompt phrasing or weighting
+   * **Use segmentation-based masks**: Replace rembg with SAM or DeepLab for more accurate and semantically meaningful region separation
+   * **Apply soft edge blending**: Dilate and feather mask edges to smooth transitions and reduce compositing artifacts 
+   * **Improve prompt design**: Use clearer phrasing or apply token weighting to better control visual emphasis in specific regions
 
 2. **Architectural Enhancements (no retraining)**
-   * Latent space fusion for more coherent merging 
-   * Modify attention to route prompts via spatial masks 
-   * Stack or interleave multiple control images for region-specific guidance
-
+   * **Latent space fusion**: Merge foreground and background in latent space instead of pixel space for improved lighting and shading coherence
+   * **Attention-based prompt routing**: Use spatial masks to guide attention layers, so that different prompts apply to different regions without retraining 
+   * **Multi-control guidance**: Stack or interleave multiple control images (e.g. lineart for foreground, depth for background) with masks to enable region-specific conditioning
 3. **Training-Based Approaches** 
-   * Train mask-aware ControlNet 
-   * Associate prompt segments with spatial areas 
-   * Extend to video with temporal consistency
+   * **Mask-aware ControlNet**: Train a ControlNet variant that explicitly takes both a control image and binary mask as inputs for true spatial control 
+   * **Prompt-to-region supervision**: Train models to map parts of the prompt to image regions using attention or segmentation alignment 
+   * **Video extension with temporal control**: Adapt the pipeline for consistent multi-frame generation using temporal-aware diffusion models
