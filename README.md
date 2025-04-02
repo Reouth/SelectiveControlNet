@@ -25,17 +25,16 @@ pip install -r requirements.txt
 
 The notebook is split into two parts:
 
-🔹 Part 1: Foreground-Only Transformation
+**Part 1**: Foreground-Only Transformation
 Uses rembg to mask the subject
 
-Applies a single prompt only to the foreground
+* Applies a single prompt only to the foreground
 
-🔹 Part 2: Dual Prompt (Foreground + Background)
+**Part 2**: Dual Prompt (Foreground + Background)
 Separates foreground and background with masks
 
-Generates each region using a different prompt
-
-Merges results via alpha blending
+* Generates each region using a different prompt
+* Merges results via alpha blending
 
 ---
 ## Folder Structure
@@ -84,7 +83,7 @@ Chosen because:
 * Avoids architectural changes via modular post-processing
 
 ---
-### Q2 – Challenges and Solutions
+### Q2 – Challenges
 The main challenge was simulating region-specific generation without model support for prompt-region mapping or binary masks.
 
 In Part 1, lineart control localized the effect, but lacked texture/color, leading to altered skin tone or facial details. I tested StableDiffusionControlNetImg2ImgPipeline with the masked image and lineart, which preserved identity better, but failed to generate any background due to how ControlNet interprets black/noisy regions literally.
