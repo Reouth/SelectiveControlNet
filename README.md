@@ -116,6 +116,8 @@ Technical limitations:
 
 ---
 ### Bonus Challenge: Consistent Transformation Across Video Frames
+[![Open Bonus in Colab](https://colab.research.google.com/drive/15HhGX-Q7EyLXTH2cayveuLBjywvi2ChV?usp=sharing)
+
 #### Approach and Reasoning
 
 To address the bonus challenge of generating two consistently transformed frames using a single prompt, I used the Control-A-Video pipeline.
