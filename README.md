@@ -132,7 +132,7 @@ Chosen because:
 The main challenge was adapting a multi-frame video model to run on just two frames. This required formatting the frames into a proper .mp4 and tuning parameters like --num_sample_frames=2 and --each_sample_frame=2.
 An additional challenge was environment compatibility. conflicting versions of huggingface_hub, jax, and diffusers caused runtime issues, which I resolved by pinning specific package versions during setup.
 
-### Future Improvements
+###  Improvements With More Time or Resources
 
 * Add support for lineart control in the video pipeline to match Part 1 more closely.
 * Extend to longer sequences with more advanced temporal smoothing.
