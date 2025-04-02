@@ -43,7 +43,8 @@ Separates foreground and background with masks
 SelectiveControlNet/
 │
 ├── notebooks/
-│   └── SelectiveControlNet.ipynb      # Main notebook
+│   └── SelectiveControlNet.ipynb        # Main notebook
+│   └── SelectiveVideoControlnet.ipynb   # Bonus notebook
 │
 ├── src/
 │   ├── masking.py                      # Foreground/background masking and normalization
@@ -112,3 +113,27 @@ Technical limitations:
    * **Mask-aware ControlNet**: Train a ControlNet variant that explicitly takes both a control image and binary mask as inputs for true spatial control 
    * **Prompt-to-region supervision**: Train models to map parts of the prompt to image regions using attention or segmentation alignment 
    * **Video extension with temporal control**: Adapt the pipeline for consistent multi-frame generation using temporal-aware diffusion models
+
+---
+### Bonus Challenge: Consistent Transformation Across Video Frames
+#### Approach and Reasoning
+
+To address the bonus challenge of generating two consistently transformed frames using a single prompt, I used the Control-A-Video pipeline.
+I extracted two frames from a video and applied the same preprocessing as in Part 1: a binary foreground mask (via rembg) was used to remove the background.
+The masked frames were then converted into a two-frame .mp4 video and passed into the model using --control_mode canny.
+
+Chosen because:
+* It maintains consistency with the masked input format used earlier.
+* Control-A-Video handles temporal coherence across frames. 
+* It works with the existing pipeline using a single shared prompt and no architectural changes.
+
+#### Challenges
+
+The main challenge was adapting a multi-frame video model to run on just two frames. This required formatting the frames into a proper .mp4 and tuning parameters like --num_sample_frames=2 and --each_sample_frame=2.
+An additional challenge was environment compatibility. conflicting versions of huggingface_hub, jax, and diffusers caused runtime issues, which I resolved by pinning specific package versions during setup.
+
+### Future Improvements
+
+* Add support for lineart control in the video pipeline to match Part 1 more closely.
+* Extend to longer sequences with more advanced temporal smoothing.
+* Experiment with latent-space fusion to improve coherence across frame boundaries.
