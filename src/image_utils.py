@@ -1,6 +1,7 @@
 from PIL import Image
-import numpy as np
 import cv2
+import numpy as np
+
 
 def load_and_resize_image(path, size=(512, 512)):
     return Image.open(path).convert("RGB").resize(size)
