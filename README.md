@@ -51,6 +51,7 @@ SelectiveControlNet/
 │   ├── image_utils.py                  # Image loading, resizing, utilities
 │   ├── control_pipeline.py             # ControlNet setup and inference functions
 │   ├── merge.py                        # Output blending and validation
+│   ├── video_utils.py                  # video loading, exracting frames, utilities
 │
 ├── config.py                           
 ├── requirements.txt
