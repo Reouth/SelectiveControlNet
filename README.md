@@ -113,7 +113,6 @@ Technical limitations:
 3. **Training-Based Approaches** 
    * **Mask-aware ControlNet**: Train a ControlNet variant that explicitly takes both a control image and binary mask as inputs for true spatial control 
    * **Prompt-to-region supervision**: Train models to map parts of the prompt to image regions using attention or segmentation alignment 
-   * **Video extension with temporal control**: Adapt the pipeline for consistent multi-frame generation using temporal-aware diffusion models
 
 ---
 ### Bonus Challenge: Consistent Transformation Across 2 frames
