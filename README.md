@@ -121,22 +121,21 @@ Technical limitations:
 
 #### Approach and Reasoning
 
-To address the bonus challenge of generating two consistently transformed frames using a single prompt, I used the Control-A-Video pipeline.
-I extracted two frames from a video and applied the same preprocessing as in Part 1: a binary foreground mask (via rembg) was used to remove the background.
-The masked frames were then converted into a two-frame .mp4 video and passed into the model using --control_mode canny.
-
+Used Control-A-Video with a two-frame .mp4, following the same masking process as in Part 1. The model was run with --control_mode canny and a shared prompt.
 Chosen because:
 * It maintains consistency with the masked input format used earlier.
 * Control-A-Video handles temporal coherence across frames. 
 * It works with the existing pipeline using a single shared prompt and no architectural changes.
 
 #### Challenges
+Adapting the model to only two frames required format adjustments and parameter tuning (--num_sample_frames=2, --each_sample_frame=2).
+Package conflicts (e.g., diffusers, jax) also had to be resolved manually.
 
-The main challenge was adapting a multi-frame video model to run on just two frames. This required formatting the frames into a proper .mp4 and tuning parameters like --num_sample_frames=2 and --each_sample_frame=2.
-An additional challenge was environment compatibility. conflicting versions of huggingface_hub, jax, and diffusers caused runtime issues, which I resolved by pinning specific package versions during setup.
+A key limitation is that Control-A-Video is autoregressive. With only two frames, the model lacks temporal context, leading to color shifts and inconsistent appearance between outputs.
 
 ####  Improvements With More Time or Resources
 
 * Add support for lineart control in the video pipeline to match Part 1 more closely.
-* Extend to longer sequences with more advanced temporal smoothing.
-* Experiment with latent-space fusion to improve coherence across frame boundaries.
+* Use more frames to improve temporal coherence
+* Extract short segments from actual videos rather than manually stitching frames 
+* Explore architectures with temporal attention or ConvLSTM, designed for smoother results even with minimal input
