@@ -7,9 +7,6 @@ def blend_images(fg_np, bg_np, mask_np):
     return fg_np * mask_np + bg_np * (1 - mask_np)
 
 def merge_images(foreground_image, background_image, mask):
-    """
-    Merge foreground and background using a binary mask.
-    """
     try:
         validate_same_size(foreground_image, background_image, mask)
 
